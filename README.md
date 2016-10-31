@@ -2,7 +2,7 @@
 
 ### 2016年10月31日 上午10:45
 
-只用Swift?不掺进Objc? 感觉这个rac_textSingal这种都没有了？
+只用Swift?不掺进Objc? 感觉这个rac_textSingal这种都没有了？原来还是要集成ReactiveCocoa框架
 
 ### 安装
 
@@ -16,6 +16,7 @@ carthage update
 
 ```
 import Result
+import ReactiveCocoa
 import ReactiveSwift
 ```
 

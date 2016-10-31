@@ -18,6 +18,7 @@
 		F5A64AF71DC6E82E005D1EDE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F5A64AF61DC6E82E005D1EDE /* README.md */; };
 		F5A64AFB1DC6E9C0005D1EDE /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A64AF91DC6E9C0005D1EDE /* ReactiveSwift.framework */; };
 		F5A64AFC1DC6E9C0005D1EDE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A64AFA1DC6E9C0005D1EDE /* Result.framework */; };
+		F5A64AFF1DC6F42B005D1EDE /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A64AFE1DC6F42B005D1EDE /* ReactiveCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		F5A64AF61DC6E82E005D1EDE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F5A64AF91DC6E9C0005D1EDE /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		F5A64AFA1DC6E9C0005D1EDE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		F5A64AFE1DC6F42B005D1EDE /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			files = (
 				F5A64AFB1DC6E9C0005D1EDE /* ReactiveSwift.framework in Frameworks */,
 				F5A64AFC1DC6E9C0005D1EDE /* Result.framework in Frameworks */,
+				F5A64AFF1DC6F42B005D1EDE /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +144,7 @@
 		F5A64AF81DC6E9C0005D1EDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5A64AFE1DC6F42B005D1EDE /* ReactiveCocoa.framework */,
 				F5A64AF91DC6E9C0005D1EDE /* ReactiveSwift.framework */,
 				F5A64AFA1DC6E9C0005D1EDE /* Result.framework */,
 			);
@@ -287,6 +291,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 			);
 			outputPaths = (
 			);

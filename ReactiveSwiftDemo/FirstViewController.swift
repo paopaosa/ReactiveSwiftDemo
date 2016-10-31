@@ -8,15 +8,18 @@
 
 import UIKit
 import Result
+import ReactiveCocoa
 import ReactiveSwift
 
 class FirstViewController: UIViewController {
+    @IBOutlet weak var name:UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let textfield = UITextField()
-        
+        self.name.rac_textSignal().subscribeNext { (next) in
+            print("what is \(next)")
+        }
     }
 
     override func didReceiveMemoryWarning() {

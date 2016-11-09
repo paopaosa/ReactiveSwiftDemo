@@ -13,8 +13,8 @@ import ReactiveSwift
 
 class FirstViewController: UIViewController {
     @IBOutlet weak var name:UITextField!
-
-    let property = MutableProperty(0)
+    @IBOutlet weak var count:UILabel!
+    let property = MutableProperty("0")
     let tapRec = UITapGestureRecognizer()
     
     override func viewDidLoad() {
@@ -24,6 +24,18 @@ class FirstViewController: UIViewController {
 //        self.name.rac_textSignal().skip(1).subscribeNext { (next) in
 //            print("what is \(next)")
 //        }
+//        count.text <~ property;
+        //字数统计
+        name.reactive.continuousTextValues.map{ $0?.characters.count }
+        .observe { [weak self](event) in
+            switch event {
+            case let .value(results):
+                self?.count.text = "\(results!)"
+            case .completed, .interrupted: break
+            default:
+                break
+            }
+        }
         self.name.reactive.continuousTextValues
             .observe(on: UIScheduler())
             .observe { event in

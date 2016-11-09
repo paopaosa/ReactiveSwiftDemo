@@ -42,10 +42,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1A-2f-nXa">
+                                <rect key="frame" x="182" y="196" width="10.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Vxx-Vx-GA4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
+                            <constraint firstItem="i1A-2f-nXa" firstAttribute="top" secondItem="1Ao-eL-gyW" secondAttribute="bottom" constant="17" id="CWb-7x-IMT"/>
+                            <constraint firstItem="i1A-2f-nXa" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="UQu-51-Zqo"/>
                             <constraint firstItem="1Ao-eL-gyW" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="VgJ-VD-Yi0"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
@@ -56,6 +67,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="count" destination="i1A-2f-nXa" id="WqD-9P-c7W"/>
                         <outlet property="name" destination="1Ao-eL-gyW" id="ehI-5G-XVs"/>
                     </connections>
                 </viewController>

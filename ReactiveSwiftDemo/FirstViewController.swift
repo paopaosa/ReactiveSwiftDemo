@@ -17,7 +17,7 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.name.rac_textSignal().subscribeNext { (next) in
+        self.name.rac_textSignal().skip(1).subscribeNext { (next) in
             print("what is \(next)")
         }
     }

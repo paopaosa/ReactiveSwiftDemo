@@ -51,9 +51,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNR-ZU-lO0">
+                                <rect key="frame" x="149" y="64" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="GNR-ZU-lO0" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="4bX-dc-qp4"/>
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
                             <constraint firstItem="i1A-2f-nXa" firstAttribute="top" secondItem="1Ao-eL-gyW" secondAttribute="bottom" constant="17" id="CWb-7x-IMT"/>
                             <constraint firstItem="i1A-2f-nXa" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="UQu-51-Zqo"/>
@@ -61,6 +68,7 @@
                             <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="GNR-ZU-lO0" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="44" id="fwa-Fn-Szc"/>
                             <constraint firstItem="1Ao-eL-gyW" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="64" id="kzo-ak-BTF"/>
                             <constraint firstItem="1Ao-eL-gyW" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="129" id="yuo-Lh-epe"/>
                         </constraints>
@@ -69,6 +77,7 @@
                     <connections>
                         <outlet property="count" destination="i1A-2f-nXa" id="WqD-9P-c7W"/>
                         <outlet property="name" destination="1Ao-eL-gyW" id="ehI-5G-XVs"/>
+                        <outlet property="usernameLabel" destination="GNR-ZU-lO0" id="iXj-qG-9oC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

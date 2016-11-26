@@ -11,11 +11,20 @@ import Result
 import ReactiveCocoa
 import ReactiveSwift
 
+class ViewModel {
+    let username = MutableProperty("")
+}
+
 class FirstViewController: UIViewController {
     @IBOutlet weak var name:UITextField!
     @IBOutlet weak var count:UILabel!
-    let property = MutableProperty("0")
+    @IBOutlet weak var usernameLabel: UILabel!
+//    var property = MutableProperty("")
+    var username:String = ""
     let tapRec = UITapGestureRecognizer()
+    var nameDispose:Disposable?
+    var allowsCookies:Bool = false
+    var vm = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +33,43 @@ class FirstViewController: UIViewController {
 //        self.name.rac_textSignal().skip(1).subscribeNext { (next) in
 //            print("what is \(next)")
 //        }
-//        count.text <~ property;
+//        let property = DynamicProperty<String>(object: self,
+//                                               keyPath: #keyPath(self.username))
+        // Update `allowsCookies` whenever the toggle is flipped.
+        self.usernameLabel.reactive.text <~ vm.username
+
+        print("view mode is \(vm)")
+//        let label = UILabel()
+//        label.reactive.text <~ self.username
+        let nameSignal = self.name.reactive.continuousTextValues
+        let signalA = nameSignal.map{ $0?.characters.count }
+        
+//        property.signal.observeValues { value in
+//            print("property is \(value)")
+//        }
+        
+//        self.property.value = "2"
+//        self.property.value = "3"
         //字数统计
-        name.reactive.continuousTextValues.map{ $0?.characters.count }
-        .observe { [weak self](event) in
-            switch event {
-            case let .value(results):
-                self?.count.text = "\(results!)"
-            case .completed, .interrupted: break
-            default:
-                break
-            }
+        signalA
+            .observe { [weak self](event) in
+                switch event {
+                case let .value(results):
+                    self?.count.text = "\(results!)"
+                case .completed, .interrupted: break
+                default:
+                    break
+                }
         }
-        self.name.reactive.continuousTextValues
+        nameDispose = nameSignal
             .observe(on: UIScheduler())
-            .observe { event in
+            .observe { [unowned self] event in
                 switch event {
                 case let .value(results):
                     print("name input is \(results!)")
+                    if let name = results as String? {
+                        self.vm.username.value = name
+                    }
                 case let .failed(error):
                     print("name input error \(error)")
                 case .completed, .interrupted:
@@ -51,19 +79,23 @@ class FirstViewController: UIViewController {
         
         self.view.addGestureRecognizer(tapRec)
         tapRec.reactive.stateChanged
-        .observe { [unowned self](event) in
-            switch event {
-            case let .value(results):
-                print("tap is \(results)")
-                self.name.resignFirstResponder()
-            case let .failed(error):
-                print("tap failed \(error)")
-            case .completed, .interrupted:
-                break
-            }
+            .observe { [unowned self](event) in
+                switch event {
+                case let .value(results):
+                    print("tap is \(results)")
+                    self.name.resignFirstResponder()
+                case let .failed(error):
+                    print("tap failed \(error)")
+                case .completed, .interrupted:
+                    break
+                }
         }
 //        self.property <~ self.name.reactive.continuousTextValues
 
+    }
+    
+    deinit {
+        nameDispose?.dispose()
     }
 
     override func didReceiveMemoryWarning() {

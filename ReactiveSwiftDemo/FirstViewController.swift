@@ -13,6 +13,7 @@ import ReactiveSwift
 
 class ViewModel {
     let username = MutableProperty("")
+//    let username = Property(value:"")
 }
 
 class FirstViewController: UIViewController {
@@ -36,12 +37,37 @@ class FirstViewController: UIViewController {
 //        let property = DynamicProperty<String>(object: self,
 //                                               keyPath: #keyPath(self.username))
         // Update `allowsCookies` whenever the toggle is flipped.
-        self.usernameLabel.reactive.text <~ vm.username
-
+//        self.usernameLabel.reactive.text <~ vm.username
+//        self.vm.username <~ self.usernameLabel.reactive.text
+//        let producer = self.usernameLabel.reactive.values(forKeyPath: #keyPath(text))
+//            .take(during: self.reactive.lifetime)
+//        view.reactive.trigger(for: #selector(view.layoutSubviews))
+        let nameLabelSignal = usernameLabel.reactive.trigger(for: #selector(setter: usernameLabel.text))
+            .map { [weak usernameLabel] in usernameLabel!.text }
+            .take(during: self.reactive.lifetime)
+        nameLabelSignal.observeValues { [unowned self] value in
+            print("got \(value)")
+            if let value = value {
+                self.vm.username.value = value
+            }
+        }
         print("view mode is \(vm)")
 //        let label = UILabel()
 //        label.reactive.text <~ self.username
         let nameSignal = self.name.reactive.continuousTextValues
+        
+//        RAC(self.textField, text) = [[self.textField.rac_textSignal map:^id(NSString *value) {
+//            return [value stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]];
+//            }] map:^id(NSString *value) {
+//            if (value.length > 4) {
+//            return [value substringToIndex:4];
+//            } else {
+//            return value;
+//            }
+//            }];
+        let filterNameSignal = nameSignal.map{ ($0?.trimmingCharacters(in: CharacterSet.decimalDigits.inverted))}
+        self.name.reactive.text <~ filterNameSignal
+        self.usernameLabel.reactive.text <~ filterNameSignal
         let signalA = nameSignal.map{ $0?.characters.count }
         
 //        property.signal.observeValues { value in

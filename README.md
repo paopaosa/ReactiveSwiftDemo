@@ -1,5 +1,27 @@
 # ReactiveSwift试用
 
+### 2016年11月26日 下午8:59
+
+学习使用 <~ 绑定
+
+```
+class HomeViewModel {
+    let username = MutableProperty("") ///< 定义一个属性username，类型字符串
+}
+
+class HomeViewController: UIViewController {
+    @IBOutlet weak var usernameLabel: UILabel!
+    var vm = HomeViewModel()
+
+    override func viewDidLoad {
+        super.viewDidLoad()
+        
+        // 绑定vm.username至界面上的self.usernameLabel
+        self.usernameLabel.reactive.text <~ self.vm.username
+    }
+}
+```
+
 ### 2016年11月9日 下午7:11
 一个订阅
 

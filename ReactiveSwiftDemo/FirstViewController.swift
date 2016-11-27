@@ -16,6 +16,10 @@ class ViewModel {
 //    let username = Property(value:"")
 }
 
+class UserModel:NSObject {
+    dynamic var gender:NSString = "Male"
+}
+
 class FirstViewController: UIViewController {
     @IBOutlet weak var name:UITextField!
     @IBOutlet weak var count:UILabel!
@@ -52,6 +56,15 @@ class FirstViewController: UIViewController {
             }
         }
         print("view mode is \(vm)")
+        
+        let user = UserModel()
+        user.gender = "Female"
+        let property = DynamicProperty<NSString>(object: user,
+                                               keyPath: #keyPath(user.gender))
+        property.signal.observeValues { (result) in
+            print("got property: \(result)")
+        }
+        user.gender = "Half"
 //        let label = UILabel()
 //        label.reactive.text <~ self.username
         let nameSignal = self.name.reactive.continuousTextValues
@@ -65,7 +78,7 @@ class FirstViewController: UIViewController {
 //            return value;
 //            }
 //            }];
-        let filterNameSignal = nameSignal.map{ ($0?.trimmingCharacters(in: CharacterSet.decimalDigits.inverted))}
+        let filterNameSignal = nameSignal.map{ $0?.trimmingCharacters(in: CharacterSet.decimalDigits.inverted) }
         self.name.reactive.text <~ filterNameSignal
         self.usernameLabel.reactive.text <~ filterNameSignal
         let signalA = nameSignal.map{ $0?.characters.count }

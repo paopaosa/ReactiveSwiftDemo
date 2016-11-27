@@ -15,7 +15,6 @@
 		F5A64AD31DC6E7AF005D1EDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A64AD11DC6E7AF005D1EDE /* LaunchScreen.storyboard */; };
 		F5A64ADE1DC6E7B0005D1EDE /* ReactiveSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A64ADD1DC6E7B0005D1EDE /* ReactiveSwiftDemoTests.swift */; };
 		F5A64AE91DC6E7B0005D1EDE /* ReactiveSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A64AE81DC6E7B0005D1EDE /* ReactiveSwiftDemoUITests.swift */; };
-		F5A64AF71DC6E82E005D1EDE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F5A64AF61DC6E82E005D1EDE /* README.md */; };
 		F5A64AFB1DC6E9C0005D1EDE /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A64AF91DC6E9C0005D1EDE /* ReactiveSwift.framework */; };
 		F5A64AFC1DC6E9C0005D1EDE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A64AFA1DC6E9C0005D1EDE /* Result.framework */; };
 		F5A64AFF1DC6F42B005D1EDE /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A64AFE1DC6F42B005D1EDE /* ReactiveCocoa.framework */; };
@@ -308,7 +307,6 @@
 			files = (
 				F5A64ACB1DC6E7AF005D1EDE /* SecondViewController.swift in Sources */,
 				F5A64AC71DC6E7AF005D1EDE /* AppDelegate.swift in Sources */,
-				F5A64AF71DC6E82E005D1EDE /* README.md in Sources */,
 				F5A64AC91DC6E7AF005D1EDE /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

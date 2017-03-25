@@ -220,7 +220,8 @@
 				TargetAttributes = {
 					F5A64AC21DC6E7AF005D1EDE = {
 						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = H95RKYZV4C;
+						ProvisioningStyle = Manual;
 					};
 					F5A64AD81DC6E7B0005D1EDE = {
 						CreatedOnToolsVersion = 8.1;
@@ -458,7 +459,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = H95RKYZV4C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -467,6 +469,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pps.ReactiveSwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1ee0f0c2-d3ec-40b5-9305-5fd2eb8b7fd6";
+				PROVISIONING_PROFILE_SPECIFIER = "XC: *";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -475,7 +479,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = H95RKYZV4C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -484,6 +489,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pps.ReactiveSwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1ee0f0c2-d3ec-40b5-9305-5fd2eb8b7fd6";
+				PROVISIONING_PROFILE_SPECIFIER = "XC: *";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

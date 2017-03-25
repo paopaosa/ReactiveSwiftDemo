@@ -30,8 +30,10 @@ class FirstViewController: UIViewController {
         .observe { [weak self](event) in
             switch event {
             case let .value(results):
-                self?.count.text = "\(results!)"
-            case .completed, .interrupted: break
+                //self?.count.text = "\(results!)"
+                self?.property.value = "\(results!)"
+            case .completed, .interrupted:
+                break
             default:
                 break
             }
@@ -62,8 +64,23 @@ class FirstViewController: UIViewController {
                 break
             }
         }
-//        self.property <~ self.name.reactive.continuousTextValues
-
+//        self.property <~ self.name.text
+        name.reactive.text <~ self.property
+        let textfield:UITextField = UITextField(frame: CGRect(x: 10, y: 30, width: 120, height: 30))
+        textfield.backgroundColor = .purple
+        self.view.addSubview(textfield)
+        textfield.reactive.controlEvents(.editingDidBegin)
+            .observe(on: UIScheduler())
+            .observe { event in
+                switch event {
+                case let .value(results):
+                    print(">>>>>name input is \(results)")
+                case let .failed(error):
+                    print(">>>>name input error \(error)")
+                case .completed, .interrupted:
+                    break
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -25,7 +25,7 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var count:UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
 //    var property = MutableProperty("")
-    var username:String = ""
+    @objc var username:String = ""
     let tapRec = UITapGestureRecognizer()
     var nameDispose:Disposable?
     var allowsCookies:Bool = false
@@ -50,7 +50,7 @@ class FirstViewController: UIViewController {
             .map { [weak usernameLabel] in usernameLabel!.text }
             .take(during: self.reactive.lifetime)
         nameLabelSignal.observeValues { [unowned self] value in
-            print("got \(value)")
+            print("got \(String(describing: value)) \(String(describing: self.usernameLabel.text))")
             if let value = value {
                 self.vm.username.value = value
             }
@@ -59,10 +59,17 @@ class FirstViewController: UIViewController {
         
         let user = UserModel()
         user.gender = "Female"
-        let property = DynamicProperty<NSString>(object: user,
-                                               keyPath: #keyPath(user.gender))
+        
+//        let producer = user.reactive.values(forKeyPath: #keyPath(gender))
+//            .take(during: self.reactive.lifetime)
+//        let producer = user.reactive.values(forKeyPath: "gender")
+//            .take(during: self.reactive.lifetime)
+        
+        let property = DynamicProperty<String>(object: user,
+                                               keyPath: "gender")
+//        let property = DynamicProperty<NSString>(object: user, keyPath: "user.gender")
         property.signal.observeValues { (result) in
-            print("got property: \(result)")
+            print("got property: \(String(describing: result))")
         }
         user.gender = "Half"
 //        let label = UILabel()
@@ -122,7 +129,7 @@ class FirstViewController: UIViewController {
                 switch event {
                 case let .value(results):
                     print("tap is \(results)")
-                    self.name.resignFirstResponder()
+                    self.view.endEditing(true)
                 case let .failed(error):
                     print("tap failed \(error)")
                 case .completed, .interrupted:
